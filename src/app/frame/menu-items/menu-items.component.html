@@ -1,0 +1,194 @@
+<div class="Arrange">
+  <div id="upper">
+    <mat-menu #appMenu="matMenu">
+      <!--For Menu---->
+      <button mat-menu-item routerLink="about">About</button>
+      <button mat-menu-item [matMenuTriggerFor]="bankDetails">
+        Bank Details
+      </button>
+      <button mat-menu-item [matMenuTriggerFor]="basicData">Basic Data</button>
+      <button mat-menu-item [matMenuTriggerFor]="customerDetails">
+        Customer Details
+      </button>
+      <button mat-menu-item [matMenuTriggerFor]="employeeDetails">
+        Employee Details
+      </button>
+      <button mat-menu-item routerLink="home">Home</button>
+      <button mat-menu-item [matMenuTriggerFor]="loanDetails">
+        Loan Details
+      </button>
+      <button mat-menu-item routerLink="login">Login</button>
+      <button mat-menu-item routerLink="logout">Logout</button>
+      <button mat-menu-item routerLink="search">Search</button>
+    </mat-menu>
+    <!----End Menu-->
+
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+
+  <!--For Top Header-->
+
+  <div id="my-content">
+    <button mat-button routerLink="home">Home</button>
+    <button mat-button routerLink="about">About</button>
+    <button *ngIf="!isAdmin()" mat-button routerLink="login">Login</button>
+
+    <button mat-button [matMenuTriggerFor]="bankDetails">
+      Bank Details
+    </button>
+    <!--For SUB Header of bank details-->
+    <mat-menu #bankDetails="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item routerLink="bankDetails/bankList">
+        Bank list
+      </button>
+      <button
+        *ngIf="!!isAdmin()"
+        mat-menu-item
+        routerLink="bankDetails/bankDataUpload"
+      >
+        Bank Upload
+      </button>
+    </mat-menu>
+    <!--end sub-header of bank details -->
+
+    <!--For SUB Header of basic data-->
+    <button *ngIf="!!isAdmin()" mat-button [matMenuTriggerFor]="basicData">
+      Basic Data
+    </button>
+    <!--start sub-header of basic data -->
+    <mat-menu #basicData="matMenu" [overlapTrigger]="false" class="content">
+      <button
+        *ngIf="!!isAdmin()"
+        mat-menu-item
+        routerLink="basicData/basicDataList"
+      >
+        Basic Data List
+      </button>
+      <button
+        *ngIf="!!isAdmin()"
+        mat-menu-item
+        routerLink="basicData/basicDataUpload"
+      >
+        Basic Data Upload
+      </button>
+    </mat-menu>
+    <!--end sub-header of basic data -->
+
+    <button
+      *ngIf="!!isAdmin()"
+      mat-button
+      [matMenuTriggerFor]="customerDetails"
+    >
+      customerDetails
+    </button>
+    <!--start sub-header of customer details-->
+    <mat-menu #customerDetails="matMenu" [overlapTrigger]="false">
+      <button
+        *ngIf="!!isAdmin()"
+        mat-menu-item
+        routerLink="customerDetails/customerData"
+      >
+        Customers Data
+      </button>
+      <button
+        *ngIf="!!isAdmin()"
+        mat-menu-item
+        routerLink="customerDetails/customerDataUpload"
+      >
+        Customer Data Upload
+      </button>
+      <button
+        *ngIf="!!isAdmin()"
+        mat-menu-item
+        routerLink="customerDetails/customerDocumentUpload"
+      >
+        Customer Document Upload
+      </button>
+      <button
+        *ngIf="!!isAdmin()"
+        mat-menu-item
+        routerLink="customerDetails/bankVerification"
+      >
+        Bank Verification
+      </button>
+      <button
+        *ngIf="!!isAdmin()"
+        mat-menu-item
+        routerLink="customerDetails/cibilVerification"
+      >
+        Cibil Verification
+      </button>
+      <button
+        *ngIf="!!isAdmin()"
+        mat-menu-item
+        routerLink="customerDetails/stampDuty"
+      >
+        Stamp Duty
+      </button>
+      <button
+        *ngIf="!!isAdmin()"
+        mat-menu-item
+        routerLink="customerDetails/loanDisbursal"
+      >
+        Loan Disbursal
+      </button>
+      <button
+        *ngIf="!!isAdmin()"
+        mat-menu-item
+        routerLink="customerDetails/moveToQueue"
+      >
+        For BT
+      </button>
+    </mat-menu>
+    <!--end sub-header of customer details-->
+
+    <button
+      *ngIf="!!isAdmin()"
+      mat-button
+      [matMenuTriggerFor]="employeeDetails"
+    >
+      Employee Details
+    </button>
+    <!--start sub-header of employee details-->
+    <mat-menu #employeeDetails="matMenu" [overlapTrigger]="false">
+      <button
+        *ngIf="!!isAdmin()"
+        mat-menu-item
+        routerLink="employeeDetails/employeeList"
+      >
+        Task Details
+      </button>
+      <button
+        *ngIf="!!isAdmin()"
+        mat-menu-item
+        routerLink="employeeDetails/epmloyeeUpload"
+      >
+        Document Upload
+      </button>
+    </mat-menu>
+    <!--end sub-header of employee-->
+
+    <button mat-button [matMenuTriggerFor]="loanDetails">
+      Loan Details
+    </button>
+    <!--start sub-header of loan details-->
+    <mat-menu #loanDetails="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item routerLink="loanDetails/loanTypeList">
+        Loan Type List
+      </button>
+      <button
+        *ngIf="!!isAdmin()"
+        mat-menu-item
+        routerLink="loanDetails/loantypeUpload"
+      >
+        Loan Type Upload
+      </button>
+    </mat-menu>
+
+    <button *ngIf="!!isAdmin()" mat-button routerLink="logout">Logout</button>
+
+    <!---End Top Header-->
+  </div>
+</div>

@@ -1,0 +1,71 @@
+.menu-item {
+  background: linear-gradient(90deg, #0078bc 1%, #00beda);
+}
+
+@media screen and (max-width: 700px) {
+  .hide-menu {
+    width: 60%;
+  }
+
+  .profile {
+    width: 10%;
+  }
+}
+
+.sec-one {
+  background: linear-gradient(90deg, #d35a88 1%, #00beda);
+}
+.sec-1,
+.sec-2 {
+  margin-top: 2%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.sec-2 {
+  flex: 1 91.666667%;
+  max-width: 96.666667%;
+}
+
+.sec-two {
+  background: linear-gradient(90deg, #61508f 1%, #14b9a3);
+}
+@media screen and (max-width: 600px) {
+  .sec-2 {
+    width: 88.666667%;
+    margin-left: 8%;
+  }
+  .sec-1 {
+    width: 90%;
+    margin-left: 9%;
+  }
+}
+
+.sec-3 {
+  max-width: 3.333333%;
+}
+
+h1 {
+  color: #0283cc;
+}
+.mainContent {
+  background-image: linear-gradient(rgb(122, 121, 173), rgb(73, 32, 71));
+  margin: 0;
+  padding: 0;
+  background: #0250c5;
+  background: -webkit-linear-gradient(bottom, #e2117a, #370bfd);
+  height: auto;
+}
+
+.downContent {
+  height: auto;
+  background: skyblue;
+}
+
+.logpage {
+  padding-top: 30px;
+}
+
+.text-inside-grid {
+  position: absolute;
+  left: 5px;
+}

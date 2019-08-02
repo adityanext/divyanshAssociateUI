@@ -1,0 +1,65 @@
+.example-card {
+  max-width: 100%;
+  height: auto;
+  padding: 37px 15px 186px 15px;
+  background-image: url("/assets/img/blur.jpg");
+  background-size: cover;
+}
+
+.login-page {
+  width: 40%;
+  padding: 0px 0px 54px 0px;
+  position: relative;
+  top: 70px;
+  border-radius: 14px;
+  height: 100%;
+  overflow: hidden;
+  margin: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .login-page {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .login-page {
+    width: 70%;
+  }
+}
+
+.info-color {
+  width: 101%;
+  background-image: linear-gradient(180deg, #1c2556, #2db3bd);
+  padding: 10px;
+  color: #ffffff;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 17px;
+}
+.example-container > * {
+  width: 100%;
+}
+.rex-1 {
+  margin-top: 15px;
+}
+.button-row button,
+.button-row a {
+  margin-right: 8px;
+}
+.space-top1 {
+  margin: 20px 0 20px 0;
+}
+.backlogo {
+  width: 52px;
+  height: 52px;
+  margin: -13px; // box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12)//
+}
+.backlog {
+  width: 35px;
+  height: 35px;
+  margin: -13px;
+}

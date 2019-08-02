@@ -1,0 +1,161 @@
+#mySidenav div {
+  position: absolute;
+  transition: 0.3s;
+  padding: 14px 3px 0px 5px;
+  height: 50px;
+  width: 190px;
+  text-decoration: none;
+  font-size: 15px;
+  color: white;
+  border-radius: 0px 20px 20px 0px;
+  z-index: 999;
+}
+
+#dashboard {
+  top: 30px;
+  left: -140px;
+}
+
+#dashboard:hover {
+  background-color: #e00707e3;
+  left: -10px;
+}
+#dashboard .material-icons {
+  border-radius: 17px;
+  background: #e00707e3;
+}
+
+#home {
+  top: 80px;
+  left: -140px;
+}
+#home:hover {
+  background-color: #4caf50;
+  left: -10px;
+}
+#home .material-icons {
+  border-radius: 17px;
+  background: #4caf50;
+}
+
+#about {
+  top: 130px;
+  left: -140px;
+}
+#about:hover {
+  background-color: #2196f3;
+  left: -10px;
+}
+
+#about .material-icons {
+  border-radius: 18px;
+  background: #2196f3;
+}
+
+#login {
+  top: 180px;
+  left: -140px;
+}
+#login:hover {
+  background-color: #f44336;
+  left: -10px;
+}
+#login .material-icons {
+  border-radius: 18px;
+  background: #f44336;
+}
+
+#employeeDetails {
+  top: 230px;
+  left: -140px;
+}
+#employeeDetails:hover {
+  background-color: #555;
+  left: -10px;
+}
+#employeeDetails .material-icons {
+  border-radius: 18px;
+  background: #555;
+}
+
+#bankDetails {
+  top: 280px;
+  left: -140px;
+}
+#bankDetails:hover {
+  background-color: blue;
+  left: -20px;
+}
+#bankDetails .material-icons {
+  border-radius: 18px;
+  background: blue;
+}
+
+#basicData {
+  top: 330px;
+  left: -140px;
+}
+#basicData:hover {
+  background-color: goldenrod;
+  left: -20px;
+}
+#basicData .material-icons {
+  border-radius: 18px;
+  background: goldenrod;
+}
+
+#customerDetails {
+  top: 380px;
+  left: -140px;
+}
+#customerDetails:hover {
+  background-color: green;
+  left: -20px;
+}
+#customerDetails .material-icons {
+  border-radius: 18px;
+  background: green;
+}
+
+#logout {
+  top: 430px;
+  left: -125px;
+}
+#logout:hover {
+  background-color: #e00707e3;
+  left: -20px;
+}
+#logout .material-icons {
+  border-radius: 18px;
+  background-color: #e00707e3;
+}
+
+.service-hover {
+  padding: 0px 0px 0px 17px;
+}
+
+.material-icons {
+  padding: 6px;
+  margin-top: -8px;
+  float: right;
+}
+
+.dropdown-menu {
+  position: absolute;
+  width: 220px !important;
+  left: 40px !important;
+  background: linear-gradient(90deg, #0078bc 1%, #00beda) !important;
+  height: auto !important;
+  border-bottom: 1 px solid black !important;
+}
+
+.dropdown-menu .dropdown-item {
+  color: rgb(233, 227, 227);
+  font-size: 16px;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background: #4caf50;
+  width: 210px;
+  height: 30px;
+}

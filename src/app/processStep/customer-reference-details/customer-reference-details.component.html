@@ -1,0 +1,121 @@
+<h3>
+  Customer refrence details page.
+</h3>
+
+<div fxLayout fxLayoutAlign="center center">
+  <mat-form-field fxFlex="1 1 100%">
+    <input
+      matInput
+      type="text"
+      (keyup)="doFilter($event.target.value)"
+      placeholder="Filter"
+    />
+  </mat-form-field>
+</div>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let element">{{ element.customerId }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.customerName }}</td>
+    </ng-container>
+
+    <!-- Primary contact number Column -->
+    <ng-container matColumnDef="primaryPhoneNumber">
+      <th mat-header-cell *matHeaderCellDef>Primary number</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.primaryContactNumber }}
+      </td>
+    </ng-container>
+
+    <!-- secondaryPhoneNumber Column -->
+    <ng-container matColumnDef="secondaryPhoneNumber">
+      <th mat-header-cell *matHeaderCellDef>Secondary number</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.secondaryContactNumber }}
+      </td>
+    </ng-container>
+
+    <!-- assign to Column -->
+    <ng-container matColumnDef="assignTo">
+      <th mat-header-cell *matHeaderCellDef>Assign To</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.assignTo }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="refrenceOne">
+      <th mat-header-cell *matHeaderCellDef>Refernce One</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          [disabled]="element.referenceCount > 0"
+          mat-flat-button
+          color="primary"
+          (click)="submit(element.customerId)"
+        >
+          Refernce One
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="refrenceTwo">
+      <th mat-header-cell *matHeaderCellDef>Refernce Two</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-flat-button
+          [disabled]="element.referenceCount > 1"
+          color="primary"
+          (click)="submit(element.customerId)"
+        >
+          Refernce Two
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="refrenceThree">
+      <th mat-header-cell *matHeaderCellDef>Refernce Three</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-flat-button
+          [disabled]="element.referenceCount > 2"
+          color="primary"
+          (click)="submit(element.customerId)"
+        >
+          Refrence Three
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="refrenceData">
+      <th mat-header-cell *matHeaderCellDef>Refernce Details</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="referenceData(element.customerId)"
+        >
+          Refrence Data
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 50, 100, 500]">
+  </mat-paginator>
+</div>
+<div>
+  <br />
+  <!-- Post data -->
+  <button mat-raised-button color="primary" (click)="submit(finalStatus)">
+    Upload Data
+  </button>
+</div>

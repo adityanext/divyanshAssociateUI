@@ -1,0 +1,517 @@
+<h3>
+  Customer Data Upload section
+</h3>
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step class="numberColor" [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Basic details</ng-template>
+
+      <!-- Pan Card -->
+      <mat-form-field hintLabel="Max 10 characters">
+        <input
+          class="numberColor"
+          matInput
+          #panCard
+          formControlName="panCard"
+          #input
+          maxlength="10"
+          placeholder="Pan card"
+        />
+      </mat-form-field>
+
+      &nbsp;&nbsp;&nbsp;&nbsp;
+
+      <mat-form-field>
+        <input
+          class="numberColor"
+          matInput
+          #customerName
+          maxlength="50"
+          placeholder="Last name, First name"
+          formControlName="customerName"
+          required
+        />
+      </mat-form-field>
+
+      <br />
+      <mat-form-field>
+        <input
+          class="numberColor"
+          matInput
+          #buisnessName
+          maxlength="50"
+          placeholder="Buisness Name"
+          formControlName="buisnessName"
+          required
+        />
+      </mat-form-field>
+
+      &nbsp;&nbsp;&nbsp;&nbsp;
+
+      <mat-form-field>
+        <mat-select
+          #loan
+          formControlName="loan"
+          placeholder="Loan types"
+          required
+        >
+          <mat-option *ngFor="let loan of loanTypes" [value]="loan.value">
+            {{ loan.viewValue }}
+          </mat-option>
+        </mat-select> </mat-form-field
+      ><br />
+
+      <mat-form-field class="example-full-width">
+        <textarea
+          class="numberColor"
+          matInput
+          #buisnessAddress
+          maxlength="100"
+          formControlName="buisnessAddress"
+          placeholder="Buisness Address"
+          required
+        ></textarea>
+      </mat-form-field>
+
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <mat-form-field>
+        <textarea
+          class="numberColor"
+          matInput
+          #permanentAddress
+          maxlength="100"
+          formControlName="permanentAddress"
+          placeholder="Permanent Address"
+          required
+        ></textarea> </mat-form-field
+      ><br />
+
+      <mat-form-field class="example-full-width">
+        <span class="numberColor" matPrefix>+91 &nbsp;</span>
+        <input
+          class="numberColor"
+          type="tel"
+          id="primaryContactNumber"
+          matInput
+          #primaryContactNumber
+          maxlength="10"
+          formControlName="primaryContactNumber"
+          placeholder="Primary number"
+        />
+        <mat-icon class="numberColor" matSuffix>mode_edit</mat-icon>
+      </mat-form-field>
+
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <mat-form-field class="example-full-width">
+        <span class="numberColor" matPrefix>+91 &nbsp;</span>
+        <input
+          class="numberColor"
+          type="tel"
+          id="secondaryContactNumber"
+          matInput
+          maxlength="10"
+          #secondaryContactNumber
+          formControlName="secondaryContactNumber"
+          placeholder="Secondary number"
+        />
+        <mat-icon class="numberColor" matSuffix
+          >mode_edit</mat-icon
+        > </mat-form-field
+      ><br />
+      <button mat-raised-button color="primary" matStepperNext>Next</button>
+    </form>
+  </mat-step>
+  <mat-step class="numberColor" [stepControl]="secondFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Income Details</ng-template>
+
+      <!-- Line of buisness -->
+      <mat-form-field hintLabel="Max 100 characters">
+        <input
+          class="numberColor"
+          matInput
+          #lineOfBuisness
+          formControlName="lineOfBuisness"
+          maxlength="50"
+          placeholder="Line of buisness"
+        />
+        <mat-hint [align]="end">{{ input.value?.length || 0 }}/10</mat-hint>
+      </mat-form-field>
+      <br />
+
+      <!-- Work in period -->
+      <mat-form-field>
+        <input
+          class="numberColor"
+          matInput
+          #workInPeriod
+          formControlName="workInPeriod"
+          placeholder="Work in Period"
+          maxlength="10"
+          type="number"
+        />
+        <span matPrefix class="numberColor">&nbsp;</span>
+        <span matSuffix class="numberColor">Month</span>
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <!-- Monthly income -->
+      <mat-form-field>
+        <input
+          class="numberColor"
+          matInput
+          #monthlyIncome
+          maxlength="10"
+          placeholder="Monthly Income"
+          formControlName="monthlyIncome"
+          type="number"
+        />
+        <span matPrefix class="numberColor">₹&nbsp;</span>
+        <span matSuffix class="numberColor">.00</span>
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <!--Net Monthly income -->
+      <mat-form-field>
+        <input
+          class="numberColor"
+          matInput
+          #netMonthlyIncome
+          maxlength="10"
+          placeholder="Net Monthly Income"
+          formControlName="netMonthlyIncome"
+          type="number"
+        />
+        <br />
+        <span matPrefix class="numberColor">₹&nbsp;</span>
+        <span matSuffix class="numberColor">.00</span> </mat-form-field
+      ><br />
+
+      <!-- Loan amount -->
+      <mat-form-field>
+        <input
+          class="numberColor"
+          matInput
+          #loanAmount
+          placeholder="Loan Amount"
+          maxlength="10"
+          formControlName="loanAmount"
+          type="number"
+        /><br />
+
+        <span matPrefix class="numberColor">₹&nbsp;</span>
+        <span matSuffix class="numberColor">.00</span>
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+
+      <!-- Other faimly income -->
+      <mat-form-field>
+        <input
+          class="numberColor"
+          matInput
+          #otherFaimlyIncome
+          maxlength="10"
+          placeholder="Other faimly Income"
+          formControlName="otherFaimlyIncome"
+          type="number"
+        />
+        <br />
+        <span matPrefix class="numberColor">₹&nbsp;</span>
+        <span matSuffix class="numberColor">.00</span>
+      </mat-form-field>
+      <br />
+      <!-- Saving and current account detials -->
+      <mat-form-field class="example-full-width">
+        <textarea
+          class="numberColor"
+          matInput
+          #currentAccountingAndSavingAccount
+          maxlength="100"
+          placeholder="Account details"
+          formControlName="currentAccountingAndSavingAccount"
+          required
+        ></textarea>
+      </mat-form-field>
+
+      <!-- Other Bank loan -->
+      <mat-radio-group #otherBankLoan formControlName="otherBankLoan">
+        <label> Other Bank loan: </label>
+        <mat-radio-button value="yes">Yes</mat-radio-button>
+        <mat-radio-button value="no">No</mat-radio-button>
+      </mat-radio-group>
+      <!-- Loan details -->
+
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input
+                class="numberColor"
+                matInput
+                #bankName
+                formControlName="bankName"
+                maxlength="50"
+                placeholder="Bank Name"
+                required
+              />
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-select
+                #otherBankLoanType
+                formControlName="otherBankLoanType"
+                placeholder="Loan types"
+                required
+              >
+                <mat-option *ngFor="let loan of loanTypes" [value]="loan.value">
+                  {{ loan.viewValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+
+          <td>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field>
+              <input
+                class="numberColor"
+                matInput
+                #otherLoanAmount
+                placeholder="Loan Amount"
+                maxlength="10"
+                formControlName="otherLoanAmount"
+                type="number"
+              />
+              <br />
+              <span matPrefix class="numberColor">₹&nbsp;</span>
+              <span matSuffix class="numberColor">.00</span>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input
+                class="numberColor"
+                matInput
+                #otherLoanEmi
+                placeholder="Loan EMI"
+                maxlength="10"
+                formControlName="otherLoanEmi"
+                type="number"
+              /><br />
+
+              <span matPrefix class="numberColor">&nbsp;</span>
+              <span matSuffix class="numberColor">.00</span>
+            </mat-form-field>
+          </td>
+
+          <td>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field>
+              <input
+                class="numberColor"
+                matInput
+                #otherLoanPeriod
+                maxlength="10"
+                placeholder="Loan Period"
+                formControlName="otherLoanPeriod"
+                type="number"
+              /><br />
+
+              <span matPrefix class="numberColor">&nbsp;</span>
+              <span matSuffix class="numberColor">month</span>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <div>
+        <button mat-raised-button color="primary" matStepperPrevious>
+          Back
+        </button>
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step class="numberColor" [stepControl]="thirdFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Documents</ng-template>
+      <!-- Buisness proof any registration -->
+      <mat-radio-group formControlName="buisnessProofAnyRegistration">
+        <label class="numberColor">
+          Buisness Proof Any Registration:
+        </label>
+        <mat-radio-button class="numberColor" value="yes">Yes</mat-radio-button>
+        <mat-radio-button class="numberColor" value="no"
+          >No</mat-radio-button
+        > </mat-radio-group
+      >&nbsp;&nbsp;&nbsp;&nbsp;
+
+      <!-- Property valuation -->
+      <mat-form-field>
+        <input
+          class="numberColor"
+          matInput
+          #propertyValuation
+          maxlength="10"
+          formControlName="propertyValuation"
+          placeholder="Property Valuation"
+          type="number"
+        />
+        <span class="numberColor" matPrefix>₹&nbsp;</span>
+        <span matSuffix class="numberColor">.00</span>
+      </mat-form-field>
+      <br />
+
+      <!-- ITR 3 years -->
+      <mat-radio-group formControlName="iTR3Year">
+        <label class="numberColor"> Do you have ITR of last 3 years: </label>
+        <mat-radio-button class="numberColor" value="yes">Yes</mat-radio-button>
+        <mat-radio-button class="numberColor" value="no"
+          >No</mat-radio-button
+        > </mat-radio-group
+      ><br />
+
+      <!-- Visit By -->
+      <mat-form-field>
+        <input
+          class="numberColor"
+          matInput
+          #visitBy
+          maxlength="50"
+          formControlName="visitBy"
+          placeholder="Visit By"
+          required
+        />
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+
+      <!-- Company name -->
+      <mat-form-field>
+        <input
+          class="numberColor"
+          matInput
+          #companyName
+          maxlength="50"
+          formControlName="companyName"
+          placeholder="Company name"
+          required
+        />
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+
+      <!-- Company address -->
+
+      <mat-form-field class="example-full-width">
+        <textarea
+          class="numberColor"
+          matInput
+          #companyAddress
+          maxlength="100"
+          formControlName="companyAddress"
+          placeholder="Company Address"
+          required
+        ></textarea>
+      </mat-form-field>
+      <br />
+      <!-- Refer By -->
+      <mat-form-field hintLabel="Max 10 characters">
+        <input
+          class="numberColor"
+          matInput
+          #referBy
+          formControlName="referBy"
+          #input
+          maxlength="50"
+          maxlength="10"
+          placeholder="Refer By"
+        />
+      </mat-form-field>
+      <br />
+      <div>
+        <div>
+          <ul>
+            <li *ngFor="let project of projects">
+              {{ project }}
+            </li>
+          </ul>
+          <button mat-raised-button color="primary" matStepperPrevious>
+            Back
+          </button>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step class="numberColor" [stepControl]="fourthFormGroup">
+    <form class="numberColor" [formGroup]="fourthFormGroup">
+      <ng-template matStepLabel>Check/Submit</ng-template>
+      <h4>
+        <b>Please re-verify below details then submit.</b>
+      </h4>
+      <mat-tab-group>
+        <mat-tab class="numberColor" label="Basic Detail">
+          <div><b>Customer Name</b>: {{ customerName.value }}</div>
+          <div><b>Pan Card</b>: {{ panCard.value }}</div>
+          <div><b>Buisness Name</b>: {{ buisnessName.value }}</div>
+          <div><b>Buisness Address</b>: {{ buisnessAddress.value }}</div>
+
+          <div><b>Loan Type</b>: {{ loan.value }}</div>
+          <div><b>Permanent Address</b>: {{ permanentAddress.value }}</div>
+
+          <div><b>Primary Number</b>: {{ primaryContactNumber.value }}</div>
+          <div><b>Secondary Number</b>: {{ secondaryContactNumber.value }}</div>
+          <p>...</p>
+        </mat-tab>
+        <mat-tab label="Income Detail">
+          <div><b>Line Of Buisness</b>: {{ lineOfBuisness.value }}</div>
+          <div><b>Work In Period</b>: {{ workInPeriod.value }}</div>
+          <div><b>Monthly Income</b>: {{ monthlyIncome.value }}</div>
+          <div><b>Net Monthly Income</b>: {{ netMonthlyIncome.value }}</div>
+          <div><b>Loan Amount</b>: {{ loanAmount.value }}</div>
+          <div><b>Other Faimly Income</b>: {{ otherFaimlyIncome.value }}</div>
+          <div>
+            <b>Account Details</b>:
+            {{ currentAccountingAndSavingAccount.value }}
+          </div>
+          <div>
+            <b>Other Bank Loan</b>: {{ firstFormGroup.value.otherBankLoan }}
+          </div>
+          <div><b>Other Bank Name</b>: {{ bankName.value }}</div>
+          <div><b>Other Bank Loan Type</b>: {{ otherBankLoanType.value }}</div>
+          <div><b>Other Loan Amount</b>: {{ otherLoanAmount.value }}</div>
+          <div><b>Other Loan EMI</b>: {{ otherLoanEmi.value }}</div>
+          <div><b>Other Loan Period</b>: {{ otherLoanPeriod.value }}</div>
+
+          <p>...</p>
+        </mat-tab>
+        <mat-tab label="Documents">
+          <div>
+            <b>Buisness Proof</b>:
+            {{ firstFormGroup.value.buisnessProofAnyRegistration }}
+          </div>
+          <div><b>Property Valuation</b>: {{ propertyValuation.value }}</div>
+          <div><b>ITR Details</b>: {{ firstFormGroup.value.iTR3Year }}</div>
+          <div><b>Visit By</b>: {{ visitBy.value }}</div>
+          <div><b>Company Name</b>: {{ companyName.value }}</div>
+          <div><b>Company Address</b>: {{ companyAddress.value }}</div>
+          <div><b>Refer By</b>: {{ referBy.value }}</div>
+
+          <p>...</p>
+        </mat-tab>
+      </mat-tab-group>
+      <button mat-raised-button color="primary" (click)="stepper.reset()">
+        Reset
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="postFormValue()"
+        [disabled]="!firstFormGroup.valid"
+      >
+        Submit
+      </button>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
