@@ -60,6 +60,7 @@ import { UploadEmployeeComponent } from "./entity/employee/upload-employee/uploa
 import { UploadLoanTypesComponent } from "./entity/loan/upload-loan-types/upload-loan-types.component";
 import { UserRoleComponent } from "./frame/user-role/user-role/user-role.component";
 import { CustomerReferenceDataComponent } from "./customer/customer-refrence-data/customer-reference-data/customer-reference-data.component";
+import { DecelartionDataComponent } from "./common/decelartion-data/decelartion-data.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,7 +92,8 @@ import { CustomerReferenceDataComponent } from "./customer/customer-refrence-dat
     AboutComponent,
     ErrorPageComponent,
     CustomerReferenceDetailsComponent,
-    CustomerReferenceDataComponent
+    CustomerReferenceDataComponent,
+    DecelartionDataComponent
   ],
   entryComponents: [
     AppComponent,
@@ -104,6 +106,7 @@ import { CustomerReferenceDataComponent } from "./customer/customer-refrence-dat
     BankVerificationComponent,
     CibilVerificationComponent,
     LoanDisbursalComponent,
+    DecelartionDataComponent,
     AfterSixMonthBTComponent,
     MasterSearchComponent,
     LoanTypesComponent,

@@ -9,6 +9,7 @@ import {
 } from "@angular/material";
 import { CustomerDataService } from "../../service/customer/customer-data.service";
 import { CustomerReferenceDataComponent } from "../../customer/customer-refrence-data/customer-reference-data/customer-reference-data.component";
+import { DecelartionDataComponent } from "src/app/common/decelartion-data/decelartion-data.component";
 
 @Component({
   selector: "app-customer-reference-details",
@@ -30,7 +31,8 @@ export class CustomerReferenceDetailsComponent implements OnInit {
     "refrenceOne",
     "refrenceTwo",
     "refrenceThree",
-    "refrenceData"
+    "refrenceData",
+    "upload"
   ];
   resultsLength = 0;
   public dataSource = new MatTableDataSource<customerData>();
@@ -66,23 +68,14 @@ export class CustomerReferenceDetailsComponent implements OnInit {
     });
   }
 
-  // public submitTwo(customerId: number) {
-  //   this.dialog.open(CustomerDetailsUploadComponent, {
-  //     data: {
-  //       customerId: customerId,
-  //       isReference: true
-  //     }
-  //   });
-  // }
-
-  // public submitThree(customerId: number) {
-  //   this.dialog.open(CustomerDetailsUploadComponent, {
-  //     data: {
-  //       customerId: customerId,
-  //       isReference: true
-  //     }
-  //   });
-  // }
+  public upload() {
+    this.dialog.open(DecelartionDataComponent, {
+      data: {
+        processStep: 2,
+        statement: " all refrences data upload "
+      }
+    });
+  }
 
   public referenceData(customerId: number) {
     this.dialog.open(CustomerReferenceDataComponent, {

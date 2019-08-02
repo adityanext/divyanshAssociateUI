@@ -43,41 +43,12 @@
       </td>
     </ng-container>
 
-    <!-- assign to Column -->
-    <ng-container matColumnDef="assignTo">
-      <th mat-header-cell *matHeaderCellDef>Assign To</th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.assignTo }}
-      </td>
+    <!-- ID Column -->
+    <ng-container matColumnDef="referenceId">
+      <th mat-header-cell *matHeaderCellDef>Reference To</th>
+      <td mat-cell *matCellDef="let element">{{ element.customerId }}</td>
     </ng-container>
 
-    <!-- Status Column -->
-    <!-- <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef>Status</th>
-      <td mat-cell *matCellDef="let element">
-        <mat-radio-group [(ngModel)]="element.customerReaction">
-          <mat-radio-button name="customerStatus" [value]="true">
-            Yes</mat-radio-button
-          >
-          <mat-radio-button name="customerStatus" [value]="false"
-            >No</mat-radio-button
-          > </mat-radio-group
-        ><br />
-      </td>
-    </ng-container> -->
-
-    <ng-container matColumnDef="select">
-      <th mat-header-cell *matHeaderCellDef>Step</th>
-      <td mat-cell *matCellDef="let element">
-        <button
-          mat-flat-button
-          color="primary"
-          (click)="submit(element.customerId)"
-        >
-          Enter Customer Data
-        </button>
-      </td>
-    </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
@@ -87,8 +58,4 @@
 </div>
 <div>
   <br />
-  <!-- Post data -->
-  <button mat-raised-button color="primary" (click)="submit(finalStatus)">
-    Upload Data
-  </button>
 </div>

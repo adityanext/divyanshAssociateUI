@@ -43,8 +43,7 @@ export class CustomerReferenceDataComponent implements OnInit {
     "name",
     "primaryPhoneNumber",
     "secondaryPhoneNumber",
-    "assignTo",
-    "select"
+    "referenceId"
   ];
   resultsLength = 0;
   public dataSource = new MatTableDataSource<customerData>();
