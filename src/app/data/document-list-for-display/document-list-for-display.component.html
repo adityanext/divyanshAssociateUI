@@ -1,0 +1,42 @@
+<h3>
+  Diffrent types of document requires in specific loan type we have.
+</h3>
+
+      <mat-form-field>
+        <mat-label>Loan type</mat-label>
+        <mat-select >
+          <mat-option *ngFor="let loan of loanTypes" [value]="loan.loanId" (onSelectionChange)="getDocumentList(loan)">
+            {{loan.loanDisplayName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button (onClick)="getDocumentList(loan)">Search </button>
+    
+<div fxLayout fxLayoutAlign="center center">
+  <mat-form-field fxFlex="1 1 100%">
+    <input
+      matInput
+      type="text"
+      (keyup)="doFilter($event.target.value)"
+      placeholder="Filter"
+    />
+  </mat-form-field>
+</div>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <!-- ID Column -->
+    <ng-container matColumnDef="document">
+      <th mat-header-cell *matHeaderCellDef>Document List</th>
+      <td mat-cell *matCellDef="let element">{{ element }}</td>
+    </ng-container>   
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 50, 100, 500]">
+  </mat-paginator>
+</div>
+<div></div>

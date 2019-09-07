@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import * as XLSX from "xlsx";
 import { CustomerDataService } from "src/app/service/customer/customer-data.service";
 import { dailyData } from "src/app/models/dailyData";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-upload-daily-data",
@@ -12,10 +13,13 @@ import { dailyData } from "src/app/models/dailyData";
 export class UploadDailyDataComponent implements OnInit {
   constructor(
     public toastr: ToastrManager,
-    private customerDataServices: CustomerDataService
+    private customerDataServices: CustomerDataService,
+    private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
   public data: Array<Array<any>>;
   public postData: dailyData[];
@@ -55,13 +59,12 @@ export class UploadDailyDataComponent implements OnInit {
         "Error: Please add correct excel file for upload, or you can download and update sample file: **Do not change first line"
       );
     } else {
-      let da = this.customerDataServices.postExcelDataCollection(
+      this.customerDataServices.postExcelDataCollection(
         JSON.stringify(this.postData)
       );
-      if (!!da) {
-        this.ngOnInit();
-        this.toastr.successToastr("Sucesfull uploaded");
-      }
+      
+        this.toastr.successToastr("Excel data sucesfully uploaded in to system");  
+        this.router.navigate(["basicData/basicDataList"]);
     }
   }
 }

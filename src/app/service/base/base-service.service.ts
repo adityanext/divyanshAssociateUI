@@ -30,6 +30,17 @@ export class BaseServiceService {
     return this.http.get<customerData[]>(this.baseUrl + path, { params });
   }
 
+  public getAll(path:string){
+    return this.http.get<customerData[]>(this.baseUrl + path);
+  }
+
+  public updateStep(path: string, customerId: any,processStep:any) {
+    let params = new HttpParams();
+    params = params.append('customerId', customerId);
+    params = params.append('processStep', processStep);
+    return this.http.get<customerData[]>(this.baseUrl + path, { params:params});
+  }
+
   public getById(path: string, id: any) {
     const params = new HttpParams().set("id", id);
     return this.http.get<customerData>(this.baseUrl + path, { params });
@@ -84,17 +95,4 @@ export class BaseServiceService {
   public postExcelData(path: string, request: any): Observable<string> {
     return this.http.post<string>(this.baseUrl + path, request, httpOptions);
   }
-  //.subscribe(
-  //   data => {
-  //     debugger;
-  //     console.log(data);
-  //   },
-  //   (err: HttpErrorResponse) => {
-  //     if (err.error instanceof Error) {
-  //       console.log("Client-side error occured.");
-  //     } else {
-  //       console.log("Server-side error occured.");
-  //     }
-  //   }
-  // );
 }

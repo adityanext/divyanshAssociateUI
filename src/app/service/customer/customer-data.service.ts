@@ -71,7 +71,6 @@ export class CustomerDataService extends BaseServiceService {
   }
   private getBankTypeData() {
     this.bankTypeDataDetails = this.getForBankData("common/bankData/all");
-    debugger;
     return this.bankTypeDataDetails;
   }
 
@@ -79,6 +78,14 @@ export class CustomerDataService extends BaseServiceService {
 
   public getCustomerData(processStep: number) {
     return this.get("customerdata/all", processStep);
+  }
+
+  public getCustomerDataForAll() {
+    return this.getAll("customerdata/getAll");
+  }
+
+  public updateProcessStep(customerId: number,processStep: number) {
+    return this.updateStep("customerdata/updateProcessStep", customerId, processStep);
   }
 
   public getCustomerDataById(id: number) {
@@ -108,7 +115,7 @@ export class CustomerDataService extends BaseServiceService {
     return this.post(relativeUrl, request);
   }
   public postDailyDataCollection(request: any) {
-    let relativeUrl = "dailyData/saveData";
+    let relativeUrl = "dailyData/saveDailyData";
     return this.postDailyData(relativeUrl, request);
   }
 

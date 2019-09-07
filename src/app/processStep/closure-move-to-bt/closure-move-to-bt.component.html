@@ -1,8 +1,8 @@
-<div *ngIf="!isAdmin()">
-  <app-error-page></app-error-page>
-</div>
+<h3>
+  Loan close.
+</h3>
 
-<div *ngIf="!!isAdmin()" fxLayout fxLayoutAlign="center center">
+<div fxLayout fxLayoutAlign="center center">
   <mat-form-field fxFlex="1 1 100%">
     <input
       matInput
@@ -13,18 +13,18 @@
   </mat-form-field>
 </div>
 
-<div *ngIf="!!isAdmin()" class="mat-elevation-z8">
+<div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort>
     <!-- ID Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>Id</th>
-      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.customerId }}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.customerName }}</td>
     </ng-container>
 
     <!-- Primary contact number Column -->
@@ -43,42 +43,37 @@
       </td>
     </ng-container>
 
-    <!-- Status Column -->
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef>Status</th>
-      <td mat-cell *matCellDef="let element">
-        <mat-radio-group [(ngModel)]="element.customerReaction">
-          <mat-radio-button name="customerStatus" [value]=1>
-            Yes</mat-radio-button
-          >
-          <mat-radio-button name="customerStatus" [value]=0
-            >No</mat-radio-button
-          > </mat-radio-group
-        ><br />
-      </td>
-    </ng-container>
-
-    <!-- Symbol Column -->
+    <!-- assign to Column -->
     <ng-container matColumnDef="assignTo">
       <th mat-header-cell *matHeaderCellDef>Assign To</th>
       <td mat-cell *matCellDef="let element">
-        <mat-select
-          [(ngModel)]="element.assignTo"
-          #otherBankLoanType
-          placeholder="Assign to"
-          required
+        {{ element.assignTo }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="refrenceData">
+      <th mat-header-cell *matHeaderCellDef>Refernce Details</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="referenceData(element.customerId)"
         >
-          <mat-option *ngFor="let emp of employee" [value]="emp.employeeName">
-            {{ emp.employeeName }}
-          </mat-option>
-        </mat-select>
+          Refrence Data
+        </button>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="select">
-      <th mat-header-cell *matHeaderCellDef>Select</th>
+      <th mat-header-cell *matHeaderCellDef>Step</th>
       <td mat-cell *matCellDef="let element">
-        <mat-checkbox (click)="uploadData(element)" ></mat-checkbox>
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="submit(element.customerId)"
+        >
+          Cloase loan
+        </button>
       </td>
     </ng-container>
 
@@ -89,10 +84,7 @@
   <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 50, 100, 500]">
   </mat-paginator>
 </div>
-<div *ngIf="!!isAdmin()">
+<div>
   <br />
-  <!-- Post data -->
-  <button mat-raised-button color="primary" (click)="submit(finalStatus)">
-    Upload Data
-  </button>
+  
 </div>

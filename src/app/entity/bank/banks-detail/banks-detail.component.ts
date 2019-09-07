@@ -34,7 +34,6 @@ export class BanksDetailComponent implements OnInit {
   public getBankData() {
     return this.customerDataServices.bankTypeDetails.subscribe(res => {
       this.dataSource.data = res as bankType[];
-      debugger;
     });
   }
 }

@@ -4,5 +4,5 @@ export class dailyData {
   public primaryPhoneNumber: string;
   public secondaryPhoneNumber: string;
   public assignTo: string;
-  public customerReaction: string;
+  public customerReaction: number;
 }

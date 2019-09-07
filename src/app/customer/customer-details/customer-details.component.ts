@@ -73,8 +73,8 @@ export class CustomerDetailsComponent implements OnInit {
     this.dialog.open(CustomerDetailsUploadComponent, {
       data: {
         customerId: customerId,
-        isReference: true
-      }
+        isReference: false
+      }      
     });
   }
 }

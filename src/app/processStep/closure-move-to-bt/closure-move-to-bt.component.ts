@@ -1,22 +1,20 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { customerData } from "../../../app/models/customerData";
 import { CustomerDataService } from "../../../app/service/customer/customer-data.service";
-import { CustomerDetailsUploadComponent } from "../../../app/processStep/customer-details-upload/customer-details-upload.component";
 import {
   MatDialog,
   MatPaginator,
   MatSort,
   MatTableDataSource
 } from "@angular/material";
-import { DocumentComponentComponent } from "../../../app/data/document-component/document-component.component";
 import { CustomerReferenceDataComponent } from "../../../app/customer/customer-refrence-data/customer-reference-data/customer-reference-data.component";
 import { DecelartionDataComponent } from "../../../app/common/decelartion-data/decelartion-data.component";
 
 
 @Component({
-  selector: 'app-bank-verification',
-  templateUrl: './bank-verification.component.html',
-  styleUrls: ['./bank-verification.component.scss'],
+  selector: 'app-closure-move-to-bt',
+  templateUrl: './closure-move-to-bt.component.html',
+  styleUrls: ['./closure-move-to-bt.component.scss'],
   styles: [
     `
       :host ::ng-deep .ui-table .ui-table-thead > tr > th {
@@ -33,9 +31,9 @@ import { DecelartionDataComponent } from "../../../app/common/decelartion-data/d
     `
   ]
 })
-export class BankVerificationComponent implements OnInit {
+export class ClosureMoveToBTComponent implements OnInit {
 
-  constructor(
+   constructor(
     private customerDataServices: CustomerDataService,
     public dialog: MatDialog
   ) {}
@@ -69,7 +67,7 @@ export class BankVerificationComponent implements OnInit {
   };
 
   public getAllCustomerData() {
-    return this.customerDataServices.getCustomerData(3).subscribe(res => {
+    return this.customerDataServices.getCustomerData(8).subscribe(res => {
       this.dataSource.data = res as customerData[];
     });
   }
@@ -86,9 +84,9 @@ export class BankVerificationComponent implements OnInit {
  
       const dialogRef = this.dialog.open(DecelartionDataComponent, {
         data: {
-          processStep: 4,
+          processStep: 9,
           customerId:customerId,
-          statement: " bank verification for all refrences completed "
+          statement: " Loan close "
         }
       });
   
@@ -96,5 +94,4 @@ export class BankVerificationComponent implements OnInit {
           data => this.ngOnInit()
       );    
     }
-
 }

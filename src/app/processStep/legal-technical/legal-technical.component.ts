@@ -1,22 +1,19 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { customerData } from "../../../app/models/customerData";
 import { CustomerDataService } from "../../../app/service/customer/customer-data.service";
-import { CustomerDetailsUploadComponent } from "../../../app/processStep/customer-details-upload/customer-details-upload.component";
 import {
   MatDialog,
   MatPaginator,
   MatSort,
   MatTableDataSource
 } from "@angular/material";
-import { DocumentComponentComponent } from "../../../app/data/document-component/document-component.component";
 import { CustomerReferenceDataComponent } from "../../../app/customer/customer-refrence-data/customer-reference-data/customer-reference-data.component";
 import { DecelartionDataComponent } from "../../../app/common/decelartion-data/decelartion-data.component";
 
-
 @Component({
-  selector: 'app-bank-verification',
-  templateUrl: './bank-verification.component.html',
-  styleUrls: ['./bank-verification.component.scss'],
+  selector: 'app-legal-technical',
+  templateUrl: './legal-technical.component.html',
+  styleUrls: ['./legal-technical.component.scss'],
   styles: [
     `
       :host ::ng-deep .ui-table .ui-table-thead > tr > th {
@@ -33,7 +30,7 @@ import { DecelartionDataComponent } from "../../../app/common/decelartion-data/d
     `
   ]
 })
-export class BankVerificationComponent implements OnInit {
+export class LegalTechnicalComponent implements OnInit {
 
   constructor(
     private customerDataServices: CustomerDataService,
@@ -69,7 +66,7 @@ export class BankVerificationComponent implements OnInit {
   };
 
   public getAllCustomerData() {
-    return this.customerDataServices.getCustomerData(3).subscribe(res => {
+    return this.customerDataServices.getCustomerData(6).subscribe(res => {
       this.dataSource.data = res as customerData[];
     });
   }
@@ -86,9 +83,9 @@ export class BankVerificationComponent implements OnInit {
  
       const dialogRef = this.dialog.open(DecelartionDataComponent, {
         data: {
-          processStep: 4,
+          processStep: 7,
           customerId:customerId,
-          statement: " bank verification for all refrences completed "
+          statement: " legal and technical verification completed "
         }
       });
   

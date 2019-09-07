@@ -11,6 +11,7 @@ import {
 import { loanType } from "src/app/models/loanType";
 import { bankType } from "src/app/models/bankType";
 import { UserRoleComponent } from "src/app/frame/user-role/user-role/user-role.component";
+import { ToastrManager } from "ng6-toastr-notifications";
 
 @Component({
   selector: "app-daily-data",
@@ -35,7 +36,8 @@ import { UserRoleComponent } from "src/app/frame/user-role/user-role/user-role.c
 export class DailyDataComponent implements OnInit {
   constructor(
     private customerDataServices: CustomerDataService,
-    private userRole: UserRoleComponent
+    private userRole: UserRoleComponent,
+    public toastr: ToastrManager
   ) {}
   public finalStatus: dailyData[] = [];
   public isAdmin(): boolean {
@@ -100,7 +102,6 @@ export class DailyDataComponent implements OnInit {
 
   public getBankData() {
     return this.customerDataServices.bankTypeDetails.subscribe(res => {
-      debugger;
       this.bankDataDetails = res;
     });
   }
@@ -117,9 +118,10 @@ export class DailyDataComponent implements OnInit {
 
   public submit(finalStatus: dailyData[]) {
     const request = JSON.stringify(finalStatus);
-    let da = this.customerDataServices.postDailyDataCollection(request);
-    if (da === null) {
+    this.customerDataServices.postDailyDataCollection(request);
+   
       this.ngOnInit();
-    }
+      this.toastr.successToastr("Daily data uploaded into Customer data");
+
   }
 }

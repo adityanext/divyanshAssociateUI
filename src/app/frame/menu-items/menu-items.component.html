@@ -43,6 +43,9 @@
       <button mat-menu-item routerLink="bankDetails/bankList">
         Bank list
       </button>
+      <button mat-menu-item routerLink="loanDetails/documentForloanType">
+        Document List
+      </button>
       <button
         *ngIf="!!isAdmin()"
         mat-menu-item
@@ -128,6 +131,12 @@
         Stamp Duty
       </button>
       <button
+      *ngIf="!!isAdmin()"
+      mat-menu-item
+      routerLink="customerDetails/Legal&Technical">
+        Legal & Technical
+      </button>
+      <button
         *ngIf="!!isAdmin()"
         mat-menu-item
         routerLink="customerDetails/loanDisbursal"
@@ -137,9 +146,9 @@
       <button
         *ngIf="!!isAdmin()"
         mat-menu-item
-        routerLink="customerDetails/moveToQueue"
+        routerLink="customerDetails/closeLoan"
       >
-        For BT
+        Close Loan
       </button>
     </mat-menu>
     <!--end sub-header of customer details-->
@@ -187,6 +196,7 @@
       </button>
     </mat-menu>
 
+    <button *ngIf="!!isAdmin()" mat-button routerLink="searchForAll">Search</button>
     <button *ngIf="!!isAdmin()" mat-button routerLink="logout">Logout</button>
 
     <!---End Top Header-->

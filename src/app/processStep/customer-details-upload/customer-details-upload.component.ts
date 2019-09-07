@@ -1,10 +1,11 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { CustomerDataService } from "src/app/service/customer/customer-data.service";
-import { customerData } from "src/app/models/customerData";
+import { CustomerDataService } from "../../../app/service/customer/customer-data.service";
+import { customerData } from "../../../app/models/customerData";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrManager } from "ng6-toastr-notifications";
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from "@angular/material";
+import { loanType } from "../../../app/models/loanType";
 
 @Component({
   selector: "app-customer-details-upload",
@@ -29,17 +30,8 @@ export class CustomerDetailsUploadComponent implements OnInit {
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
   firstStep: any[];
-  public loanTypes: any[] = [
-    { value: 1, viewValue: "House Loan" },
-    { value: 2, viewValue: "Loan Against Property" },
-    { value: 3, viewValue: "Personal Loan" },
-    { value: 4, viewValue: "Buisness Loan" },
-    { value: 5, viewValue: "Car Loan" },
-    { value: 6, viewValue: "Project Finance" },
-    { value: 7, viewValue: "School Finance" },
-    { value: 8, viewValue: "Education Loan" },
-    { value: 9, viewValue: "Limit OD" }
-  ];
+  public loanTypes: loanType[];
+  
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
       customerName: [null, Validators.required],
@@ -80,6 +72,8 @@ export class CustomerDetailsUploadComponent implements OnInit {
       thirdCtrl: ["", Validators.required]
     });
     this.fourthFormGroup = this._formBuilder.group({});
+	
+	this.getLoanData();
   }
 
   private getCustomerDetailsById(customerId: number) {
@@ -89,6 +83,12 @@ export class CustomerDetailsUploadComponent implements OnInit {
         this.customerDataDetails = res as customerData;
       });
   }
+  
+  public getLoanData() {
+      return this.customerDataServices.loanTypeDetails.subscribe(res => {
+        this.loanTypes = res;
+      });
+    }
 
   //name :FormControl;
   public postFormValue() {
@@ -98,9 +98,10 @@ export class CustomerDetailsUploadComponent implements OnInit {
       this.customerDataServices.postCustomerData(request).subscribe(res => {
         this.response = res as any;
         if (this.response !== null) {
-          this.toastr.successToastr("Sucessfully uploaded");
+
+          this.toastr.successToastr("Sucessfully uploaded basic details");
           this.dialogRef.close();
-          //this.router.navigate(["customerDetails/customerRefrenceData"]);
+          this.router.navigate(["customerDetails/customerRefrenceData"]);
         } else {
           this.toastr.errorToastr("Error: Please enter correct context");
         }
@@ -111,7 +112,7 @@ export class CustomerDetailsUploadComponent implements OnInit {
         .subscribe(res => {
           this.response = res as any;
           if (this.response !== null) {
-            this.toastr.successToastr("Sucessfully uploaded");
+            this.toastr.successToastr("Sucessfully uploaded reference data");
             this.dialogRef.close();
           } else {
             this.toastr.errorToastr("Error: Please enter correct context");

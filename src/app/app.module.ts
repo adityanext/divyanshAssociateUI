@@ -61,6 +61,11 @@ import { UploadLoanTypesComponent } from "./entity/loan/upload-loan-types/upload
 import { UserRoleComponent } from "./frame/user-role/user-role/user-role.component";
 import { CustomerReferenceDataComponent } from "./customer/customer-refrence-data/customer-reference-data/customer-reference-data.component";
 import { DecelartionDataComponent } from "./common/decelartion-data/decelartion-data.component";
+import { DocumentComponentComponent } from './data/document-component/document-component.component';
+import { DocumentListForDisplayComponent } from './data/document-list-for-display/document-list-for-display.component';
+import { StampDutyComponent } from './processStep/stamp-duty/stamp-duty.component';
+import { LegalTechnicalComponent } from './processStep/legal-technical/legal-technical.component';
+import { ClosureMoveToBTComponent } from './processStep/closure-move-to-bt/closure-move-to-bt.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,7 +98,12 @@ import { DecelartionDataComponent } from "./common/decelartion-data/decelartion-
     ErrorPageComponent,
     CustomerReferenceDetailsComponent,
     CustomerReferenceDataComponent,
-    DecelartionDataComponent
+    DecelartionDataComponent,
+    DocumentComponentComponent,
+    DocumentListForDisplayComponent,
+    StampDutyComponent,
+    LegalTechnicalComponent,
+    ClosureMoveToBTComponent
   ],
   entryComponents: [
     AppComponent,
@@ -114,6 +124,7 @@ import { DecelartionDataComponent } from "./common/decelartion-data/decelartion-
     BanksDetailComponent,
     BankUploadComponent,
     EmployeeListComponent,
+    DocumentComponentComponent,
     UploadEmployeeComponent,
     HeaderComponent,
     FooterComponent,

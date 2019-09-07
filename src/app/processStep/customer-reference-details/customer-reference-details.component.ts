@@ -10,6 +10,8 @@ import {
 import { CustomerDataService } from "../../service/customer/customer-data.service";
 import { CustomerReferenceDataComponent } from "../../customer/customer-refrence-data/customer-reference-data/customer-reference-data.component";
 import { DecelartionDataComponent } from "src/app/common/decelartion-data/decelartion-data.component";
+import { Router } from "@angular/router";
+import { observable } from "rxjs";
 
 @Component({
   selector: "app-customer-reference-details",
@@ -68,13 +70,19 @@ export class CustomerReferenceDetailsComponent implements OnInit {
     });
   }
 
-  public upload() {
-    this.dialog.open(DecelartionDataComponent, {
+  public upload(customerId: number) {
+ 
+    const dialogRef = this.dialog.open(DecelartionDataComponent, {
       data: {
         processStep: 2,
+        customerId:customerId,
         statement: " all refrences data upload "
       }
     });
+
+    dialogRef.afterClosed().subscribe(
+        data => this.ngOnInit()
+    );    
   }
 
   public referenceData(customerId: number) {
