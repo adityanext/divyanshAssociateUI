@@ -57,7 +57,6 @@ export class CustomerDetailsUploadComponent implements OnInit {
       otherFaimlyIncome: [null, Validators.required],
       currentAccountingAndSavingAccount: [null, Validators.required],
       otherBankLoan: [null, Validators.required],
-      otherBankLoanType: [null, Validators.required],
       bankName: ["NA", Validators.required],
       otherLoanAmount: [0, Validators.required],
       otherLoanEmi: [0, Validators.required],

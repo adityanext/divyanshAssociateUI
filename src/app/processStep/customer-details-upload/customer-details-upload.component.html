@@ -263,8 +263,8 @@
                 placeholder="Loan types"
                 required
               >
-                <mat-option *ngFor="let loan of loanTypes" [value]="loan.value">
-                  {{ loan.viewValue }}
+                <mat-option *ngFor="let loan of loanTypes" [value]="loan.id">
+                  {{ loan.loanDisplayName }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
